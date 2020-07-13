@@ -1,25 +1,19 @@
 package com.tekcamp.model;
 
-import java.awt.*;
+import java.awt.Graphics;
+import java.awt.Rectangle;
 
 public abstract class Element extends Rectangle {
 
-    public boolean right, left, up, down;
-    private int speed = 4;
-
+    protected static final int ELEMENT_WIDTH = 32;
+    protected static final int ELEMENT_HEIGHT = 32;
+    
     public Element(int x, int y) {
-        setBounds(x, y, 32, 32);
+        setBounds(x, y, ELEMENT_WIDTH, ELEMENT_HEIGHT);
     }
-
-    public void tick() {
-        if (right)
-            x += speed;
-        if (left)
-            x -= speed;
-        if (up)
-            y -= speed;
-        if (down)
-            y += speed;
+    
+    protected Element(int x, int y, int elementWidth, int elementHeight) {
+    	setBounds(x, y, elementWidth, elementHeight);
     }
 
     public abstract void render(Graphics g);
